@@ -1,0 +1,63 @@
+.avatar {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 10px;    /* bo góc */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* đổ bóng */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.user-management__container {
+    margin-left: 200px;
+}
+
+.btn {
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.btn-warning {
+    color: white;
+}
+
+.btn-danger {
+    color: white;
+}
+
+.user-management__container h3 {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.admin-sidebar__link--active {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.admin-sidebar__link--active:hover {
+    background-color: #0056b3;
+    color: white;
+}
+.user-page__container{
+    margin-left: 330px;
+}
+.table__thead--lightblue {
+    background-color: #d9f0ff;
+    color: #000;
+}
+

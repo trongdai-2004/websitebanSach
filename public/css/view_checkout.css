@@ -1,0 +1,101 @@
+body.checkout {
+  background-color: #c9e4ee;
+  margin-bottom: 50px;
+}
+
+.checkout__container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.checkout__section-title {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #888;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.checkout__methods,
+.checkout__info,
+.checkout__summary {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+  margin-top: 50px;
+}
+
+.checkout__method-btn {
+  background-color: #3e3e3e;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkout__method-btn img {
+  width: 25px;
+}
+
+.checkout__field {
+  margin-bottom: 15px;
+}
+
+.checkout__field input,
+.checkout__field textarea {
+  background-color: #b5f6fb;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.checkout__field textarea {
+  height: 100px;
+  resize: none;
+}
+
+.checkout__summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.checkout__note {
+  background-color: #f7dede;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.checkout__total strong {
+  color: red;
+}
+
+.checkout__btn {
+  width: 100%;
+  background-color: #56e0e0;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.checkout__terms {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.checkout__terms a {
+  color: #1e88e5;
+  text-decoration: none;
+}

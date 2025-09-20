@@ -1,0 +1,32 @@
+.order-page__title {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.order-table__btn-view {
+    min-width: 80px;
+}
+
+.order-table__row:hover {
+    background-color: #f1f9ff;
+}
+.order-page__container{
+margin-left: 330px;
+}
+.order-details__container {
+    margin-left: 250px;
+}
+
+.order-details-page .card-body p {
+    margin-bottom: 0.5rem;
+}
+.order-details__container{
+    margin-left: 330px;
+}
+.order-edit__container {
+    margin-left:330px;
+}
+
+.order-edit-page .form-group label {
+    font-weight: bold;
+}

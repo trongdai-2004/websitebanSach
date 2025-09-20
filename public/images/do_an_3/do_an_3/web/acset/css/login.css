@@ -1,0 +1,175 @@
+/* Toàn trang */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Nền */
+body.login-page {
+  background: url("../css/img/bg.png") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Lớp overlay */
+.login-page__overlay {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Tiêu đề chào mừng */
+.login-page__welcome {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1a75ff;
+  text-align: center;
+  margin-bottom: 30px;
+  z-index: 2;
+  transform: translateY(-230px);
+}
+
+/* Khung đăng nhập */
+.login-box {
+  background: linear-gradient(to bottom, #f7faff, #e3f2fd);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+  width: 350px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Nút đóng */
+.login-box__close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.login-box__btn-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: #0066cc;
+  cursor: pointer;
+}
+
+/* Tiêu đề form */
+.login-box__title {
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #0099ff;
+  text-align: center;
+}
+
+/* Form */
+.login-form__group label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.login-form__input {
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.login-form__input:focus {
+  border-color: #3399ff;
+  box-shadow: 0 0 3px rgba(51, 153, 255, 0.5);
+}
+
+
+/* Nhớ mật khẩu & Quên mật khẩu */
+.login-form__options {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.login-form__remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #333;
+}
+
+.login-form__remember input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #1a75ff;
+}
+
+.login-form__remember label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.login-form__forgot {
+  color: #1a8cff;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.login-form__forgot:hover {
+  text-decoration: underline;
+  color: #0066cc;
+}
+
+/* Nút đăng nhập */
+.login-form__btn {
+  background: linear-gradient(to right, #66ccff, #3399ff);
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Footer dưới form */
+.login-form__footer {
+  font-size: 13px;
+  color: #555;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.login-form__note {
+  color: #555;
+  font-size: 13px;
+}
+
+.login-form__register {
+  color: #1a75ff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  margin-left: 4px;
+}
+
+.login-form__register:hover {
+  text-decoration: underline;
+  color: #004f99;
+}

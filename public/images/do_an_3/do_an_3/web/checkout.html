@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thanh Toán - BookOra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="acset/css/checkout.css">
+</head>
+<body class="checkout">
+  <div class="checkout__container">
+    <div class="row">
+      <!-- Cột trái -->
+      <div class="col-md-8">
+        <div class="checkout__methods">
+          <h5 class="checkout__section-title">CHỌN PHƯƠNG THỨC THANH TOÁN</h5>
+          <div class="checkout__method-btn">Tài khoản ngân hàng <i class="fas fa-angle-right"></i></div>
+          <div class="checkout__method-btn">Ví điện tử Momo <img src="acset/css/img/momo.png" alt="Momo"></div>
+          <div class="checkout__method-btn">Ví Zalo Pay <img src="acset/css/img/zalopay.png" alt="ZaloPay"></div>
+          <div class="checkout__method-btn">Thanh toán khi nhận hàng <i class="fas fa-angle-right"></i></div>
+        </div>
+
+        <div class="checkout__info">
+          <h5 class="checkout__section-title">THÔNG TIN NGƯỜI NHẬN</h5>
+
+          <div class="checkout__field">
+            <label>Họ và tên</label>
+            <input type="text" class="form-control" placeholder="Nhập họ và tên">
+          </div>
+
+          <div class="checkout__field">
+            <label>Số điện thoại</label>
+            <input type="text" class="form-control" placeholder="Nhập số điện thoại">
+          </div>
+
+          <div class="checkout__field">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Nhập email">
+          </div>
+
+       
+
+      
+
+          <div class="checkout__field">
+            <label>Địa chỉ</label>
+            <input type="text" class="form-control" placeholder="Nhập địa chỉ cụ thể">
+          </div>
+
+          <div class="checkout__field">
+            <label>Ghi chú</label>
+            <textarea class="form-control" placeholder="Nhập nội dung..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cột phải -->
+      <div class="col-md-4">
+        <div class="checkout__summary">
+          <h5 class="checkout__section-title">THÔNG TIN ĐƠN HÀNG</h5>
+
+          <div class="checkout__summary-row">
+            <span>Tạm tính:</span>
+            <strong>27,000đ</strong>
+          </div>
+
+          <div class="checkout__summary-row">
+            <span>Giảm giá:</span>
+            <strong>0đ</strong>
+          </div>
+
+          <div class="checkout__summary-row">
+            <span>Phí ship:</span>
+            <strong>20,000đ</strong>
+          </div>
+
+          <div class="checkout__note">
+            Phí ship tính theo đơn và không giới hạn số lượng sách
+          </div>
+
+          <div class="checkout__summary-row checkout__total">
+            <span>Thành tiền:</span>
+            <strong>47,000đ</strong>
+          </div>
+
+          <p class="checkout__terms">
+            Bằng việc nhấn thanh toán, bạn đồng ý với 
+            <a href="#">Các điều khoản khách hàng</a>
+          </p>
+
+          <button class="checkout__btn">Đặt hàng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

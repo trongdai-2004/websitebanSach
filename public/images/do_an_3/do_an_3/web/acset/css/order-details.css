@@ -1,0 +1,187 @@
+.order-page {
+  background-color: #e3f2fd;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;             
+  padding-top: 40px;             
+  padding-bottom: 40px;           
+  display: flex;
+  justify-content: center;       
+  align-items: flex-start;      
+}
+.order-container {
+  border-radius: 12px;
+  padding: 80px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 1140px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: -150px;
+}
+
+.col-md-8 {
+  padding-left: 0;
+}
+
+/* Khung sản phẩm */
+.order-details__item {
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 30px;
+  transform: translateX(-20px);
+  min-height: 400px;
+  position: relative;
+  left: 0px;
+  top: 90px;
+}
+
+/* Hình ảnh */
+.order-details__image {
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+/* Nội dung sản phẩm */
+.order-details__info {
+  flex-grow: 1;
+}
+
+.order-details__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.order-details__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  max-width: 85%;     /* Giới hạn chiều ngang */
+  word-break: break-word;
+}
+
+
+
+.order-details__remove:hover {
+  color: red;
+}
+
+.order-details__price {
+  font-size: 16px;
+  color: #e60000;
+  margin-bottom: 8px;
+  position: relative;
+  left: 0px;
+  top: -25px;
+}
+
+.order-details__quantity {
+  font-size: 14px;
+  margin-bottom: 8px;
+  position: relative;
+  left: 0px;
+  top: -25px;
+}
+
+.order-details__total {
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  left: 0px;
+  top: -25px;
+}
+
+/* Thông tin đơn hàng */
+
+
+.order-summary h5 {
+  font-weight: bold;
+}
+
+.order-summary p {
+  font-size: 14px;
+}
+
+.order-summary button {
+  background: #00bcd4;
+  border: none;
+  font-weight: bold;
+}
+
+.order-summary button:hover {
+  background: #0097a7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-details__item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .order-details__header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-details__remove {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .order-details__image {
+    margin-bottom: 10px;
+  }
+}
+.order-details__remove {
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  margin-left: 430px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  left: 0px;
+  top: -25px;
+}
+.order-seller {
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.order-seller h5 {
+  font-weight: bold;
+  color: #333;
+}
+
+.order-seller p {
+  margin-bottom: 8px;
+}
+
+.order-summary {
+  border: 1px solid #b3e5fc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  font-size: 16px;
+  max-width: 100%;
+  margin-left: auto;
+}
+
+

@@ -1,0 +1,69 @@
+/* Giao diện nền */
+.about-page {
+  background-color: #B5DCE8;
+}
+
+/* Tổng khung */
+.about {
+  padding: 30px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+/* Tiêu đề giới thiệu bên trái */
+.about__intro-title {
+  color: #0d47a1;
+  position: relative;
+  top: 80px;
+}
+
+/* Khung ảnh sách */
+.about__image-wrapper { 
+  border-radius: 12px;
+  background-color: #f5faff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  width: 1000px;
+  position: relative;
+  left:600px;
+  top: -70px;
+}
+
+/* Ảnh sách */
+.about__image {
+  max-width: 400px;
+  height: auto;
+  display: block;
+}
+
+/* Các tiêu đề phụ */
+.about__section-title {
+  color: #0d47a1;
+  position: relative;
+  left: -300px;
+  top: 300px
+}
+
+/* Danh sách */
+.about__list {
+  padding-left: 20px;
+  position: relative;
+  left: -300px;
+  top: 300px;
+
+}
+
+.about__item {
+  margin-bottom: 6px;
+}
+
+/* Đoạn văn */
+.about__paragraph {
+  margin-bottom: 15px;
+  position: relative;
+  left: -300px;
+  top: 300px;
+}
+.about__last{
+  margin-bottom: 300px;
+}

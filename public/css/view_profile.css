@@ -1,0 +1,129 @@
+/* Toàn bộ trang */
+body.profile {
+  background-color: #B5DCE8;
+  
+}
+
+/* Container chính */
+.profile__container {
+ margin-top: 50px;
+ margin-bottom: 50px;
+}
+
+/* Avatar */
+.profile__avatar-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #000000;
+}
+
+.profile__avatar-btn {
+  background-color: #56e0e0;
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.profile__avatar-btn:hover {
+  background-color: #2dd6d6;
+}
+
+.profile__avatar-btn i {
+  margin-right: 6px;
+}
+
+.profile__avatar-input {
+  display: none;
+}
+
+/* Phần thông tin */
+.profile__info-section {
+  flex-grow: 1;
+}
+
+.profile__title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile__label {
+  font-weight: 500;
+}
+
+.profile__input {
+  background-color: #f5fafd;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 8px 12px;
+  transition: border-color 0.3s ease;
+}
+
+.profile__input:focus {
+  border-color: #56e0e0;
+  outline: none;
+  box-shadow: none;
+}
+
+.profile__field {
+  margin-bottom: 15px;
+}
+
+/* Nút thao tác */
+.profile__btn {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+}
+
+/* Nút lưu */
+.profile__btn--save {
+  background-color: #56e0e0;
+  color: white;
+}
+
+.profile__btn--save:hover {
+  background-color: #2dd6d6;
+  color: white;
+}
+
+/* Nút hủy */
+.profile__btn--cancel {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.profile__btn--cancel:hover {
+  background-color: #d0d0d0;
+  color: #000;
+}
+
+/* Lịch sử đơn hàng */
+.profile__section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #444;
+}
+
+.profile__orders-table td,
+.profile__orders-table th {
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.profile__orders-table .badge {
+  font-size: 13px;
+  padding: 5px 10px;
+
+  border-radius: 20px;
+}

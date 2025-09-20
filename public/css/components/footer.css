@@ -1,0 +1,36 @@
+* {
+	box-sizing: border-box;
+}
+.footer{
+    padding: 3%;
+    border-top: 2px solid #AEBEC4;
+    background-color: #B5DCE8;
+    
+}
+.footer__title{
+	font-size: 20px;
+	font-weight: 600;
+}
+.footer__title-small{
+	font-size: 16px;
+	font-weight: 500;
+	margin-top: 10px;
+}
+.footer__title-network{
+	text-align: left;
+}
+.footer__title .row{
+	margin-left: 1px;
+}
+.footer__title-fb a i{
+	color: blue;
+	
+}
+.footer__title-yb a i{
+	color: red;
+	margin-left: -80%;
+}
+.footer__title-ig a i{
+	color: black;
+	margin-left: -160%;
+}

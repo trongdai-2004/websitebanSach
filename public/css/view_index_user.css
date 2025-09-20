@@ -1,0 +1,99 @@
+*{
+  box-sizing: border-box;
+
+}
+
+.all{
+  background-color: #B5DCE8;
+  padding-bottom: 50px;
+
+
+}
+
+.all-small{
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.book{
+  padding-top: 20px;
+}
+
+.slide__image {
+  max-height: 700px;
+  object-fit: cover; 
+  margin-top: 100px;
+  
+}
+
+.book__bookType{
+  text-align: center;
+  font-size: 46px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  margin-top: 60px;
+}
+.book__product-image{
+  max-height: 200px;
+  max-width: 200px;
+  margin-bottom:90px;
+
+}
+.book__product-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.book__product-name{
+  font-weight: 400;
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+.book__product-price{
+  font-size: 20px;
+  color: red;
+  margin-bottom: 20px;
+}
+.banner__title-one{
+  background-image: url('../../public/images/banner_1t.jpg');
+  font-size: 36px;
+  font-weight: 450;
+  padding: 20px 0;
+  margin: 0px;
+ 
+
+}
+
+.banner__title-one {
+  background-image: url('../../public/images/banner_1t.jpg');
+  background-size: cover;          /* Giúp hình nền phủ toàn bộ khu vực */
+  background-position: center;     /* Căn giữa hình */
+  background-repeat: no-repeat;    /* Không lặp lại ảnh nền */
+
+  font-size: 36px;
+  font-weight: 450;
+  color: black;                    /* (tuỳ) Giúp chữ nổi bật hơn nếu nền tối */
+  padding: 60px 0;                 /* Tạo không gian cho hình ảnh hiển thị đẹp */
+  margin: 0;
+  text-align: center;
+}
+.banner__title-two {
+  background-image: url('../../public/images/banner_2.jpg');
+  background-size: cover;          /* Giúp hình nền phủ toàn bộ khu vực */
+  background-position: center;     /* Căn giữa hình */
+  background-repeat: no-repeat;    /* Không lặp lại ảnh nền */
+
+  font-size: 36px;
+  font-weight: 450;
+  color: black;                    /* (tuỳ) Giúp chữ nổi bật hơn nếu nền tối */
+  padding: 60px 0;                 /* Tạo không gian cho hình ảnh hiển thị đẹp */
+  margin: 0;
+  text-align: right;
+}
+.banner__title-two p{
+  margin-right: 90px;
+}
+
+
+
+
+

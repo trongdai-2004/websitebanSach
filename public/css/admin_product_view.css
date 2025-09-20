@@ -1,0 +1,41 @@
+.product-page__container {
+    background-color: #f8fbff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.product-page__title {
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.product-page__add-btn {
+    font-weight: 500;
+}
+
+.product-page__search input {
+    border-radius: 4px;
+}
+
+
+.product-table__actions button {
+    margin-right: 5px;
+}
+.product-page__container{
+    margin-left: 330px;
+}
+.product-table__thead {
+    background-color: #d6e4ff;
+}
+.product-table__row td {
+    text-align: center;
+    vertical-align: middle;
+}
+.product-table__image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+

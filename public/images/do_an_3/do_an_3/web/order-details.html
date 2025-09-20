@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chi tiết đơn hàng - BookOra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="acset/css/order-details.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="order-page">
+
+<div class="container order-container">
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Sản phẩm 1 -->
+        <div class="order-details__item ">
+          <img src="acset/css/img/item.png" alt="Sản phẩm" class="order-details__image mr-4">
+          <div class="order-details__info ">
+
+  <!-- Bọc tiêu đề và biểu tượng xóa -->
+  <div class="d-flex justify-content-between align-items-start mb-2">
+    <h5 class="order-details__title mb-0">CHÚ THUẬT HỒI CHIẾN - TẬP 1 - BẢN THƯỜNG</h5>
+    <a href="#" class="order-details__remove text-dark ml-3" title="Xóa sản phẩm">
+      <i class="fas fa-trash fa-lg"></i>
+    </a>
+  </div>
+
+  <p class="order-details__price text-danger mb-1">27,000đ</p>
+  <div class="order-details__quantity d-flex align-items-center mb-1">
+    <span>Số lượng</span>
+    <button class="btn btn-sm btn-outline-secondary ml-2">-</button>
+    <span class="mx-2">1</span>
+    <button class="btn btn-sm btn-outline-secondary">+</button>
+  </div>
+  <p class="order-details__total mt-2 mb-0">Thành tiền: <span class="text-danger">27,000đ</span></p>
+  
+    </div>
+    <div class="col-md-4">
+      <div class="order-summary p-4 shadow-sm rounded bg-white">
+          <h5 class="mb-3">THÔNG TIN ĐƠN HÀNG</h5>
+          <p>Tạm tính: <span class="float-right text-danger">27,000đ</span></p>
+          <p>Giảm giá: <span class="float-right text-danger">0đ</span></p>
+          <hr>
+          <p><strong>Thành tiền:</strong> <span class="float-right text-danger">27,000đ</span></p>
+          <button class="btn btn-info btn-block mt-3">Tiến hành thanh toán</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

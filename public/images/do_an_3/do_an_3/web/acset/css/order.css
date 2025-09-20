@@ -1,0 +1,56 @@
+body.order {
+  background-color: #cbe5ef;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 40px 16px;
+}
+
+.order__container {
+  background-color: #e3f7fc;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.order__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #003c5e;
+}
+
+.order__message,
+.order__total,
+.order__info,
+.order__support {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.order-success__price {
+  color: #e53935;
+  font-weight: bold;
+}
+
+.order__link,
+.order__hotline {
+  color: #0288d1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.order__link:hover,
+.order__hotline:hover {
+  text-decoration: underline;
+}
+
+.order__divider {
+  border: none;
+  height: 1px;
+  background-color: #b3e5fc;
+  margin: 20px 0;
+}
