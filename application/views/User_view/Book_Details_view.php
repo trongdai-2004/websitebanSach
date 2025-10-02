@@ -118,96 +118,66 @@
         <div class="book__detail-blue">
         <p>ĐÁNH GIÁ</p>
     </div>
+    <form action="<?php echo base_url() .'index.php/User/add_review/'. $product_id['id'];?>" method="post">
+    <input type="hidden" name="user_id" value="<?= isset($user['id']) ? $user['id'] : '' ?>"> 
 
+    <div class="book__evaluate-star">
+        <label>Chọn sao:</label><br>
+        <select name="rating" required>
+            <option value="5">★★★★★ (5)</option>
+            <option value="4">★★★★☆ (4)</option>
+            <option value="3">★★★☆☆ (3)</option>
+            <option value="2">★★☆☆☆ (2)</option>
+            <option value="1">★☆☆☆☆ (1)</option>
+        </select>
+    </div>
+
+    <textarea name="comment" class="form-control mt-2" placeholder="Nhận xét..." required></textarea>
+    <button type="submit" class="btn btn-primary mt-2">Gửi đánh giá</button>
+</form>
+
+
+
+<!-- Hiển thị danh sách đánh giá -->
+<?php if(!empty($reviews)): ?>
+    <?php foreach($reviews as $review): ?>
         <div class="book__evaluate">
-            <div class="book__evaluate-input">
-                <div class="book__evaluate-label">
-                    Đánh giá của bạn
-                </div>
-                <input type="text" name="evaluate">
-                
+            <div class="book__evaluate-avatar">
+                <img src="<?= !empty($user['avatar']) ? $user['avatar'] : base_url('public/images/avatarGGjpeg.jpeg'); ?>" alt="avatar">
             </div>
+            <div class="book__evaluate-star">
+                <?php for($i=1; $i<=5; $i++): ?>
+                    <?php if($i <= $review['rating']): ?>
+                        <i class="fa-solid fa-star"></i>
+                    <?php else: ?>
+                        <i class="fa-regular fa-star"></i>
+                    <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="book__evaluate-nickname">
+                <?= $review['user_name'] ?>
+            </div>
+            <div class="book__evaluate-time">
+                <p><?= date('d/m/Y H:i', strtotime($review['created_at'])) ?></p>
+            </div>
+            <div class="book__evaluate-text">
+                <?= $review['comment'] ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>Chưa có đánh giá nào.</p>
+<?php endif; ?>
+
+
+        
+        
+
+        
             
-            <div class="book__evaluate-list">
-                
            
-            <div class="book__evaluate-avatar">
-                <img src="<?php echo base_url(); ?>public\images\avatar.webp" alt="avatar">
-            </div>
-           
-            <div class="book__evaluate-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i> 
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-             <div class="book__evaluate-nickname">
-                Nguyễn Cường 
-            </div>
-            <div class="book__evaluate-time">
-                <p>30 phút trước </p>
-            </div>
-            </div>
-            <div class="book__evaluate-text">
-                Truyện rất hay !
-            </div>
 
-        </div>
-        <div class="book__evaluate">
-            <div class="book__evaluate-list">
-                
-           
-            <div class="book__evaluate-avatar">
-                <img src="<?php echo base_url(); ?>public\images\avatar.webp" alt="avatar">
-            </div>
-           
-            <div class="book__evaluate-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i> 
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-             <div class="book__evaluate-nickname">
-                Nguyễn Cường 
-            </div>
-            <div class="book__evaluate-time">
-                <p>30 phút trước </p>
-            </div>
-            </div>
-            <div class="book__evaluate-text">
-                Truyện rất hay !
-            </div>
-
-        </div>
-        <div class="book__evaluate">
-            <div class="book__evaluate-list">
-                
-           
-            <div class="book__evaluate-avatar">
-                <img src="<?php echo base_url(); ?>public\images\avatar.webp" alt="avatar">
-            </div>
-           
-            <div class="book__evaluate-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i> 
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-             <div class="book__evaluate-nickname">
-                Nguyễn Cường 
-            </div>
-            <div class="book__evaluate-time">
-                <p>30 phút trước </p>
-            </div>
-            </div>
-            <div class="book__evaluate-text">
-                Truyện rất hay !
-            </div>
-
-        </div>
+    
         <div class="book__category">
             <div class="book__category-text">
                   <span>SÁCH CÙNG THỂ LOẠI</span>

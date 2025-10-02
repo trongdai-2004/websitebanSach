@@ -260,6 +260,35 @@ public function getOrderDetail($order_id, $user_id)
 
 
 
+// Lấy đánh giá của 1 sản phẩm
+public function get_reviews($product_id) {
+    $this->db->select('product_reviews.*, users.nickname as user_name');
+    $this->db->from('product_reviews');
+    $this->db->join('users', 'users.id = product_reviews.user_id', 'left');
+    $this->db->where('product_id', $product_id);
+    $this->db->order_by('created_at', 'DESC');
+    return $this->db->get()->result_array();
+}
+
+public function insert_review($data) {
+    return $this->db->insert('product_reviews', $data);
+}
+
+public function get_average_rating($product_id) {
+    $this->db->select_avg('rating');
+    $this->db->where('product_id', $product_id);
+    $query = $this->db->get('product_reviews');
+    return $query->row()->rating ?? 0;
+}
+public function get_product($id) {
+    return $this->db->where('id', $id)
+                    ->get('products')  // thay 'products' bằng tên bảng sản phẩm của bạn
+                    ->row_array();      // trả về 1 mảng duy nhất
+}
+
+
+
+
 
 
 

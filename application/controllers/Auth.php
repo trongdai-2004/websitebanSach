@@ -72,9 +72,11 @@ class Auth extends CI_Controller
         $data['user'] = $this->user;
         $this->load->view('Auth_view/Login_view', $data);
     }
+    
 
 
 }
+
 
 
 /* End of file Auth.php */

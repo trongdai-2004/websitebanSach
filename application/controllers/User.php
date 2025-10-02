@@ -94,6 +94,9 @@ class User extends CI_Controller
         $data['user'] = $this->user;
         $productByID = $this->User_model->bookDetail($id);
         $data['product_id'] = $productByID;
+        $data['product'] = $this->User_model->get_product($id);
+        $data['reviews'] = $this->User_model->get_reviews($id);
+        $data['average_rating'] = $this->User_model->get_average_rating($id);
         $this->load->view('User_view/Book_Details_view', $data);
     }
     public function addCart()
@@ -384,6 +387,28 @@ public function viewOrder($order_id)
 
     $this->load->view('User_view/order_detail', $data);
 }
+
+
+
+
+
+
+public function add_review($product_id) {
+    $data = [
+        'product_id' => $product_id,
+        'user_id'    => $this->input->post('user_id'),
+        'rating'     => $this->input->post('rating'),
+        'comment'    => $this->input->post('comment'),
+        'created_at' => date('Y-m-d H:i:s')
+    ];
+
+    $this->User_model->insert_review($data);
+
+    redirect('User/bookDetail/'.$product_id);
+}
+
+
+
 
 
 
