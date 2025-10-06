@@ -72,6 +72,57 @@ class Auth extends CI_Controller
         $data['user'] = $this->user;
         $this->load->view('Auth_view/Login_view', $data);
     }
+
+    
+    public function login_google()
+{
+    $client = new Google_Client();
+    $client = new Google_Client();
+    $client->setClientId(getenv('GOOGLE_CLIENT_ID'));
+    $client->setClientSecret(getenv('GOOGLE_CLIENT_SECRET'));
+    $client->setRedirectUri(getenv('GOOGLE_REDIRECT_URI'));
+
+    $client->addScope("email");
+    $client->addScope("profile");
+
+    
+    if ($this->input->get('code')) {
+        $token = $client->fetchAccessTokenWithAuthCode($this->input->get('code'));
+
+     
+        if (isset($token['error'])) {
+            echo "Lỗi khi lấy token: " . $token['error_description'];
+            exit;
+        }
+
+        
+        $client->setAccessToken($token);
+
+        
+        $oauth = new Google_Service_Oauth2($client);
+        $google_user = $oauth->userinfo->get();
+
+       
+        $user = $this->Auth_model->get_user_by_email($google_user->email);
+        if (!$user) {
+            $this->Auth_model->register($google_user->email, '', $google_user->name);
+            $user = $this->Auth_model->get_user_by_email($google_user->email);
+        }
+
+        $this->session->set_userdata([
+            'user_id'   => $user['id'],
+            'username'  => $user['nickname'], // nickname thay vì username
+            'role'      => $user['role'] ?? 'user'
+        ]);
+
+        redirect('User/indexUser');
+    } 
+    else {
+      
+        $auth_url = $client->createAuthUrl();
+        redirect($auth_url);
+    }
+}
     
 
 
