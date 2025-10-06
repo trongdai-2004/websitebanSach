@@ -78,9 +78,9 @@ class Auth extends CI_Controller
 {
     $client = new Google_Client();
     $client = new Google_Client();
-    $client->setClientId(getenv('GOOGLE_CLIENT_ID'));
-    $client->setClientSecret(getenv('GOOGLE_CLIENT_SECRET'));
-    $client->setRedirectUri(getenv('GOOGLE_REDIRECT_URI'));
+    $client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+    $client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+    $client->setRedirectUri('http://localhost/do_an_3/index.php/Auth/login_google');
 
     $client->addScope("email");
     $client->addScope("profile");
