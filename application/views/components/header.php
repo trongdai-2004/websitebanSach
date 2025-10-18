@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <div class="col-1">
-                    <a href="" class="header__contact">
+                    <a href="<?php echo base_url(); ?>index.php/User/chat" class="header__contact">
                         <p>Liên hệ </p>
                     </a>
                 </div>

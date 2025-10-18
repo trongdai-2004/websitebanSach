@@ -217,6 +217,40 @@ public function updateProduct($id, $product_name, $price, $product_type, $author
 		$this->db->where('id', $id);
 		return $this->db->update('products', $data);
 	}
+// chức năng nhắn tin giữa user và admin
+	public function getAllUsersWithMessages()
+    {
+        $this->db->select('DISTINCT(user_id)');
+        $query = $this->db->get('chats');
+        return $query->result_array();
+    }
+
+    public function getMessagesByUser($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get('chats');
+        $rows = $query->result_array();
+
+        foreach ($rows as &$row) {
+            $decoded = json_decode($row['messages'], true);
+            $row['messages'] = (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) ? $decoded : [];
+        }
+
+        return $rows;
+    }
+
+    public function saveReply($user_id, $message)
+    {
+        $data = [
+            'user_id' => $user_id,
+            'messages' => json_encode([
+                ['user' => 'admin', 'message' => $message, 'time' => date('H:i')]
+            ]),
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+
+        return $this->db->insert('chats', $data);
+    }
 
 	
 

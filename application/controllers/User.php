@@ -185,6 +185,11 @@ class User extends CI_Controller
         $data['user'] = $this->user;
         $this->load->view('User_view/About_view', $data);
     }
+    function chat()
+    {
+        $data['user'] = $this->user;
+        $this->load->view('User_view/chat_view', $data);
+    }
 
     public function search()
 {
@@ -406,6 +411,39 @@ public function add_review($product_id) {
 
     redirect('User/bookDetail/'.$product_id);
 }
+
+// chức năng nhắn tin user với admin
+
+// Lấy tất cả tin nhắn
+public function getMessageByID()
+{
+    $user_id = $this->session->userdata('user_id');
+    if (!$user_id) redirect('User/login');
+
+    $data['messages'] = $this->User_model->getMessageByID($user_id);
+    $this->load->view('User_view/chat_view', $data);
+}
+
+// Gửi tin nhắn và trả về JSON
+public function sendMessage()
+{
+    $user_id = $this->session->userdata('user_id');
+    $message = $this->input->post('message', true);
+
+    if ($user_id && $message) {
+        $this->User_model->saveMessage($user_id, $message);
+    }
+
+    // Trả về JSON để client append tin nhắn
+    $data['messages'] = $this->User_model->getMessageByID($user_id);
+    echo json_encode($data);
+}
+
+
+
+
+
+
 
 
 

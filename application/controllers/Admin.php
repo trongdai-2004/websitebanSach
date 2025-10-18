@@ -32,6 +32,7 @@ class Admin extends CI_Controller
 
 
 
+
 	public function addProduct()
 {
     if ($this->input->method() === 'post') {
@@ -323,6 +324,32 @@ public function markOrderRead($id) {
         redirect('Admin/getAllProduct');
     }
    
+
+// chức năng nhắn tin giữa user và admin
+
+ public function chat()
+    {
+        $data['users'] = $this->Admin_model->getAllUsersWithMessages();
+        $this->load->view('Admin_view/chat_list', $data);
+    }
+
+    public function viewChat($user_id)
+    {
+        $data['user_id'] = $user_id;
+        $data['messages'] = $this->Admin_model->getMessagesByUser($user_id);
+        $this->load->view('Admin_view/chat_detail', $data);
+    }
+
+    public function sendReply($user_id)
+    {
+        $message = $this->input->post('message', true);
+
+        if (!empty($message)) {
+            $this->Admin_model->saveReply($user_id, $message);
+        }
+
+        redirect('Admin/viewChat/'.$user_id);
+    }
 
 
 

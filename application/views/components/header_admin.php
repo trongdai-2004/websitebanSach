@@ -28,6 +28,9 @@
                 <a href="<?php echo base_url(); ?>index.php/Admin/getOrder" class="admin-sidebar__link">
                     <i class="fas fa-star admin-sidebar__icon"></i> Quản lý đơn hàng
                 </a>
+                <a href="<?php echo base_url();?>index.php/Admin/chat" class="admin-sidebar__link admin-sidebar__link--active">
+                    <i class="fas fa-chart-line admin-sidebar__icon"></i> Quản lý tin nhắn
+                </a>
                 <a href="<?php echo base_url(); ?>index.php/Auth/login" class="admin-sidebar__link">
                     <i class="fas fa-home admin-sidebar__icon"></i> Đăng xuất 
                 </a>

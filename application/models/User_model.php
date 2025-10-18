@@ -282,9 +282,48 @@ public function get_average_rating($product_id) {
 }
 public function get_product($id) {
     return $this->db->where('id', $id)
-                    ->get('products')  // thay 'products' bằng tên bảng sản phẩm của bạn
-                    ->row_array();      // trả về 1 mảng duy nhất
+                    ->get('products')  
+                    ->row_array();      
 }
+
+
+
+// chức năng  nhắn tin user và admin 
+
+
+
+public function saveMessage($user_id, $message)
+{
+    
+    $data = [
+        'user_id' => $user_id,
+        'messages' => json_encode([
+            // Đảm bảo là 'user'
+            ['user' => 'user', 'message' => $message, 'time' => date('H:i')] 
+        ]),
+        'created_at' => date('Y-m-d H:i:s')
+    ];
+
+    return $this->db->insert('chats', $data);
+}
+
+public function getMessageByID($user_id)
+{
+    $this->db->where('user_id', $user_id);
+    $query = $this->db->get('chats');
+    $rows = $query->result_array();
+
+    foreach ($rows as &$row) {
+        $decoded = json_decode($row['messages'], true);
+        $row['messages'] = (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) ? $decoded : [];
+    }
+
+    return $rows;
+}
+
+
+
+
 
 
 
