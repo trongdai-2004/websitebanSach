@@ -18,8 +18,20 @@
       <div class="col-md-8">
         <div class="checkout__methods">
           <h5 class="checkout__section-title">CHỌN PHƯƠNG THỨC THANH TOÁN</h5>
-          <div class="checkout__method-btn">Tài khoản ngân hàng <i class="fas fa-angle-right"></i></div>
-          <div class="checkout__method-btn">Ví điện tử Momo <img src="<?php echo base_url(); ?>public\images\momo.png" alt="Momo"></div>
+          <?php $this->session->set_userdata('final_price', $final_price); ?>
+          <a href="<?php echo base_url(); ?>index.php/User/qrvietcombank"><div class="checkout__method-btn">Tài khoản ngân hàng <i class="fas fa-angle-right"></i></div></a>
+
+
+          <button type="submit" formaction="<?= base_url('index.php/User/momo') ?>" class="checkout__method-btn button_momo">
+         Ví điện tử Momo <img src="<?= base_url('public/images/momo.png') ?>" alt="Momo">
+        </button>
+        <style>
+          .button_momo{
+            width: 674px;
+          }
+          
+        </style>
+
           <div class="checkout__method-btn">Ví Zalo Pay <img src="<?php echo base_url(); ?>public\images\zalopay.png" alt="ZaloPay"></div>
           <div class="checkout__method-btn">Thanh toán khi nhận hàng <i class="fas fa-angle-right"></i></div>
         </div>
@@ -90,8 +102,24 @@
             Bằng việc nhấn thanh toán, bạn đồng ý với 
             <a href="#">Các điều khoản khách hàng</a>
           </p>
+
+            <?php
+if($this->input->post()){
+    $this->session->set_userdata([
+        'name'    => $this->input->post('name'),
+        'sdt'     => $this->input->post('sdt'),
+        'email'   => $this->input->post('email'),
+        'address' => $this->input->post('address'),
+        'note'    => $this->input->post('note'),
+        'final_price' => $final_price
+    ]);
+}
+?>
+
+
            
-          <button class="checkout__btn">Đặt hàng</button>
+          <button class="checkout__btn ">Đặt hàng</button>
+          
         </form>
         </div>
       </div>

@@ -439,6 +439,172 @@ public function sendMessage()
     echo json_encode($data);
 }
 
+// thanh toán trực tuyến bằng vietcombank
+public function qrvietcombank()
+{
+    // Thông tin Vietcombank
+    $bankCode = "970436"; 
+    $accountNo = "1031312329"; 
+    $accountName = "NGUYEN TRUNG THANH";
+
+    // Nội dung chuyển khoản
+    $info = "Thanh toan don hang";
+
+    $amount = $this->session->userdata('final_price');
+
+    $user_id = $this->session->userdata('user_id');
+    if (!$user_id) redirect('Auth/login');
+
+    $infoEncoded = urlencode($info);
+    $accountNameEncoded = urlencode($accountName);
+
+    $qrUrl = "https://img.vietqr.io/image/{$bankCode}-{$accountNo}-qr_only.png?amount={$amount}&addInfo={$infoEncoded}&accountName={$accountNameEncoded}";
+
+    $data = [
+        'qrUrl'  => $qrUrl,
+        'amount' => $amount,
+        'info'   => $info,
+        'user_id'=> $user_id
+    ];
+
+    $this->load->view('User_view/QR_vietcombank', $data);
+}
+
+// Khi người dùng nhấn "Tôi đã thanh toán"
+public function confirmPayment()
+{
+    $user_id = $this->session->userdata('user_id');
+    if (!$user_id) redirect('Auth/login');
+
+    // Lấy số tiền đã thanh toán
+    $final_price = $this->session->userdata('final_price');
+
+    // Lưu thông tin thanh toán vào đơn hàng hoặc session
+    $this->session->set_flashdata('success', "Bạn đã thanh toán thành công {$final_price} đ");
+
+    // Chuyển sang trang thanh toán thành công
+    redirect('User/addOrders');
+}
+
+
+
+// thanh toán trực tuyến bằng momo
+public function execPostRequest($url, $data)
+{
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data))
+    );
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+
+public function momo()
+{
+    $user_id = $this->session->userdata('user_id');
+
+    // Lấy dữ liệu từ form POST, nếu rỗng thì dùng mặc định hoặc từ profile
+    $name    = $this->input->post('name') ?: 'Khách';
+    $sdt     = $this->input->post('sdt') ?: '';
+    $email   = $this->input->post('email') ?: '';
+    $address = $this->input->post('address') ?: '';
+    $note    = $this->input->post('note') ?: '';
+
+    // Lưu vào session luôn
+    $this->session->set_userdata([
+        'name'    => $name,
+        'sdt'     => $sdt,
+        'email'   => $email,
+        'address' => $address,
+        'note'    => $note
+    ]);
+
+    // Lấy giỏ hàng và giá từ session
+    $total_price    = $this->session->userdata('total_price') ?: 0;
+    $discount_price = $this->session->userdata('discount_price') ?: 0;
+    $final_price    = $this->session->userdata('final_price') ?: 10000;
+
+    $cart_items = $this->User_model->getCart($user_id);
+
+    // Lưu đơn hàng vào CSDL ngay tại đây
+    $order_id = $this->User_model->createOrderWithItems(
+        $name, $sdt, $email, $address, $note,
+        $total_price, $discount_price, $final_price,
+        $user_id, $cart_items
+    );
+
+    // Xóa giỏ hàng
+    $this->User_model->clearCart($user_id);
+
+    // Tiếp tục tạo link MoMo
+    $amount = $final_price;
+    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+    $partnerCode = 'MOMOBKUN20180529';
+    $accessKey = 'klm05TvNBzhg7h7j';
+    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+    $orderInfo = "Thanh toán đơn hàng #$order_id";
+    $orderId = time() . "";
+    $redirectUrl ="http://localhost/do_an_3/index.php/User/momoSuccess";
+    $ipnUrl ="http://localhost/do_an_3/index.php/User/momoSuccess";
+    $requestId = time() . "";
+    $requestType = "payWithATM";
+    $extraData = "";
+
+    $rawHash = "accessKey=$accessKey&amount=$amount&extraData=$extraData&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$requestId&requestType=$requestType";
+    $signature = hash_hmac("sha256", $rawHash, $secretKey);
+
+    $data = [
+        'partnerCode' => $partnerCode,
+        'partnerName' => "Test",
+        'storeId'     => "MomoTestStore",
+        'requestId'   => $requestId,
+        'amount'      => $amount,
+        'orderId'     => $orderId,
+        'orderInfo'   => $orderInfo,
+        'redirectUrl' => $redirectUrl,
+        'ipnUrl'      => $ipnUrl,
+        'lang'        => 'vi',
+        'extraData'   => $extraData,
+        'requestType' => $requestType,
+        'signature'   => $signature
+    ];
+
+    $result = $this->execPostRequest($endpoint, json_encode($data));
+    $jsonResult = json_decode($result, true);
+
+    if(isset($jsonResult['payUrl'])){
+        redirect($jsonResult['payUrl']);
+    } else {
+        echo "Không thể tạo liên kết thanh toán MoMo. Kiểm tra lại cấu hình.";
+    }
+}
+public function momoSuccess()
+{   
+
+    $total_price    = $this->session->userdata('total_price');
+    $discount_price = $this->session->userdata('discount_price');
+    $final_price    = $this->session->userdata('final_price');
+    $user_id        = $this->session->userdata('user_id');
+    $cart_items = $this->User_model->getCart($user_id); // lấy từ bảng cart
+    $this->User_model->clearCart($user_id);
+
+    // Load view hiển thị kết quả
+    $data['user'] = $this->user;
+    $data['cart_items'] = $cart_items;
+    $data['total_price'] = $total_price;
+    $data['discount_price'] = $discount_price;
+    $data['final_price'] = $final_price;
+    $this->load->view('User_view/momo_Success_view', $data);
+}
+
+
+
+
 
 
 
