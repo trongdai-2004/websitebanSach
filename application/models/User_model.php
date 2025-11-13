@@ -8,6 +8,7 @@ class User_model extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
+        $this->load->database();
 	}
 
 
@@ -320,6 +321,40 @@ public function getMessageByID($user_id)
 
     return $rows;
 }
+
+
+
+
+
+// gợi ý sản phẩm 
+
+public function get_ai_recommendations($product_id, $limit = 4) {
+        // Kết bảng recommendations với bảng products để lấy thông tin sách
+        $this->db->select('p.*, r.score');
+        $this->db->from('recommendations r');
+        $this->db->join('products p', 'r.recommended_product_id = p.id');
+        $this->db->where('r.product_id', $product_id);
+        $this->db->order_by('r.score', 'DESC'); // Ưu tiên gợi ý có điểm cao nhất
+        $this->db->limit($limit);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    /**
+     * Hàm dự phòng: Lấy sản phẩm cùng thể loại
+     * (Dùng khi 1 sản phẩm chưa được AI train)
+     */
+    public function get_related_by_category($product_id, $product_type, $limit = 4) {
+        $this->db->select('*');
+        $this->db->from('products');
+        $this->db->where('product_type', $product_type); // Lấy theo cột product_type
+        $this->db->where('id !=', $product_id); // Không lấy chính nó
+        $this->db->order_by('RAND()'); // Lấy ngẫu nhiên
+        $this->db->limit($limit);
+        
+        return $this->db->get()->result_array();
+    }
 
 
 

@@ -89,14 +89,34 @@ class User extends CI_Controller
 
     
 
-    public function bookDetail($id)
+   public function bookDetail($id)
     {
         $data['user'] = $this->user;
-        $productByID = $this->User_model->bookDetail($id);
-        $data['product_id'] = $productByID;
+
+        // 1. Lấy thông tin sản phẩm (Code cũ của bạn, tôi gộp lại)
         $data['product'] = $this->User_model->get_product($id);
+        $data['product_id'] = $data['product']; // Gán cho biến cũ
+
+        if (empty($data['product'])) {
+            show_404();
+        }
+
+        // 2. Lấy đánh giá (Code cũ của bạn)
         $data['reviews'] = $this->User_model->get_reviews($id);
         $data['average_rating'] = $this->User_model->get_average_rating($id);
+
+        // 3. THÊM LOGIC GỢI Ý (Code mới)
+        // Vì bạn đã gộp code gợi ý vào User_model, chúng ta gọi User_model
+        $data['recommendations'] = $this->User_model->get_ai_recommendations($id, 4);
+
+        // 4. XỬ LÝ DỰ PHÒNG (Code mới)
+        // Nếu AI không có gợi ý, lấy sản phẩm cùng thể loại
+        if (empty($data['recommendations'])) {
+            $current_product_type = $data['product']['product_type']; 
+            $data['recommendations'] = $this->User_model->get_related_by_category($id, $current_product_type, 4);
+        }
+
+        // 5. Load view (Code cũ của bạn)
         $this->load->view('User_view/Book_Details_view', $data);
     }
     public function addCart()
@@ -601,6 +621,10 @@ public function momoSuccess()
     $data['final_price'] = $final_price;
     $this->load->view('User_view/momo_Success_view', $data);
 }
+
+
+// gợi ý sản phẩm 
+
 
 
 

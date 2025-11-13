@@ -104,6 +104,55 @@
 
        
     </div>
+
+
+<!-- gợi ý sản phẩm  -->
+
+
+    <div class="container" style="margin-top: 50px;">
+    <h3>Có thể bạn cũng thích</h3>
+    <hr>
+    <div class="row">
+
+        <?php if (!empty($recommendations)): ?>
+            <?php foreach ($recommendations as $rec_product): ?>
+            
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-item" style="border: 1px solid #eee; padding: 10px; margin-bottom: 20px; text-align: center;">
+                        
+                        <a href="<?php echo base_url('index.php/User/bookDetail/' . $rec_product['id']); ?>">
+                            <img src="<?php echo $rec_product['front_image']; ?>" 
+                                 alt="<?php echo $rec_product['product_name']; ?>" 
+                                 style="width: 100%; height: 250px; object-fit: cover;">
+                        </a>
+                        
+                       <h5 style="margin-top: 20px; height: 40px;">
+                            <a href="<?php echo base_url('index.php/User/bookDetail/' . $rec_product['id']); ?>">
+                        <?php echo $rec_product['product_name']; ?>
+                            </a>
+                        </h5>
+                        
+                        <p style="color: red; font-weight: bold;">
+                            <?php echo number_format($rec_product['price']); ?> đ
+                        </p>
+                        
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Không có gợi ý nào cho sản phẩm này.</p>
+        <?php endif; ?>
+
+    </div></div>```
+
+
+
+
+
+<!-- gợi ý sản phẩm  -->
+
+
     <div class="book__detail-blue">
         <p>MÔ TẢ</p>
     </div>
